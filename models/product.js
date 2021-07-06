@@ -9,10 +9,17 @@ const productSchema = new mongoose.Schema(
             maxlength: 32
         },
     estado: {
-        type: Boolean
+        type: Boolean,
+        default: true,
+        required: true
 
-    }}
-        
+    },
+    completado: {
+        type: Boolean,
+        default: false,
+        required: true
+    }
+}
 );
 
 module.exports = mongoose.model("Product", productSchema);

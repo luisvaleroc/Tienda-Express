@@ -20,7 +20,8 @@ app.use(cors());
 app.use(express.json())
 
 app.get('/api/product', async(req,res) => {
-    const products = await Product.find();
+    
+    const products = await Product.find({estado: true});
     res.json({
         products
     })
@@ -28,7 +29,6 @@ app.get('/api/product', async(req,res) => {
 app.post('/api/product', async (req,res) => {
     
         const body = req.body;
-        body.estado = true
         const productDB = await Product.findOne(body)
 
         if(productDB){
@@ -42,7 +42,6 @@ app.post('/api/product', async (req,res) => {
     res.json({
         msg:'Producto creado',
         product,
-        body
 
 })
 });
